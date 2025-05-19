@@ -280,6 +280,9 @@
     <section class="py-12 gradient-bg text-white">
         <div class="max-w-4xl mx-auto px-4 text-center">
             <h2 class="text-2xl font-bold mb-6">Let's Connect</h2>
+            <div class="bg-blue-700 text-white py-2 px-6 rounded-full inline-block mb-6">
+                <i class="fas fa-clock mr-2"></i> Available from June 2025
+            </div>
             <p class="text-lg mb-8 max-w-2xl mx-auto">Available for select part-time roles, consulting engagements, or strategic content positions.</p>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-4xl mx-auto">
                 <a href="mailto:bryan@bryancollins.com" class="btn btn-primary">
@@ -308,6 +311,17 @@
         </div>
     </footer>
 
+    <!-- Testimonial Widget -->
+    <div class="testimonial-container">
+        <div class="testimonials-wrapper">
+            <!-- Testimonials will be dynamically inserted here -->
+        </div>
+        <div class="testimonial-controls">
+            <button class="prev-btn" aria-label="Previous testimonial">←</button>
+            <button class="next-btn" aria-label="Next testimonial">→</button>
+        </div>
+    </div>
+
     <!-- Simple script for smooth scrolling -->
     <script>
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -316,6 +330,21 @@
                 document.querySelector(this.getAttribute('href')).scrollIntoView({
                     behavior: 'smooth'
                 });
+            });
+        });
+    </script>
+    
+    <!-- Testimonial Widget Scripts and Styles -->
+    <link rel="stylesheet" href="testimonials/styles/widget.css">
+    <script src="testimonials/scripts/widget.js"></script>
+    <script>
+        // Initialize the testimonial widget when the page is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            new TestimonialWidget({
+                layout: 'modern',
+                transition: 'fade',
+                autoplay: true,
+                showControls: true
             });
         });
     </script>
