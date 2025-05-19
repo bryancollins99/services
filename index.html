@@ -281,8 +281,48 @@
     <section class="py-12 bg-white">
         <div class="max-w-4xl mx-auto px-4">
             <h2 class="text-2xl font-bold mb-8 text-center text-gray-800">What My Clients Say</h2>
-            <div id="testimonials-widget"></div>
-            <script src="https://cdn.jsdelivr.net/gh/bryancollins99/testimonials@main/dist/widget.js"></script>
+            <div class="testimonial-container modern">
+                <div class="testimonials-wrapper">
+                    <!-- Hardcoded Testimonials -->
+                    <div class="testimonial fade active">
+                        <div class="testimonial-content">Thank you, sir. The presentation was fantastic, and I am extremely grateful for your expertise, and your time.</div>
+                        <div class="testimonial-author">
+                            <img src="https://ui-avatars.com/api/?name=EH&background=random&color=fff&size=150" alt="Eric Hahn" class="author-image">
+                            <div class="author-info">
+                                <h3 class="author-name">Eric Hahn</h3>
+                                <p class="author-role">April 22, 2025</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial fade">
+                        <div class="testimonial-content">I really appreciate all your offerings in addition to the 1:1. You are a fantastic teacher and just really deliver so much value without the annoying bits so many video presenters have.</div>
+                        <div class="testimonial-author">
+                            <img src="https://ui-avatars.com/api/?name=KG&background=random&color=fff&size=150" alt="Kimberly Guerre" class="author-image">
+                            <div class="author-info">
+                                <h3 class="author-name">Kimberly Guerre</h3>
+                                <p class="author-role">April 10, 2025</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial fade">
+                        <div class="testimonial-content">Hello, I'm Steve, and I recently attended a workshop by Bryan Collins on writing and repurposing. I loved his training, along with all the provided materials.</div>
+                        <div class="testimonial-author">
+                            <img src="https://firebasestorage.googleapis.com/v0/b/testimonialto.appspot.com/o/testimonials%2F43c1e38c-17af-4237-bac7-b5f9c92234a2%2Favatar?alt=media&token=ba53c5fd-0779-4c67-8edd-11c4c5f910d8" alt="Steve Williams" class="author-image">
+                            <div class="author-info">
+                                <h3 class="author-name">Steve Williams</h3>
+                                <p class="author-role">September 7, 2024</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-controls">
+                    <button class="prev-btn" aria-label="Previous testimonial">←</button>
+                    <button class="next-btn" aria-label="Next testimonial">→</button>
+                </div>
+            </div>
+            <script src="testimonials/scripts/widget-modified.js"></script>
         </div>
     </section>
 
