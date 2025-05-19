@@ -1,29 +1,56 @@
-// Load testimonials from CSV
+// Hardcoded testimonials from the CSV file
 async function loadTestimonials() {
-    try {
-        // Try multiple possible paths to handle different deployment environments
-        let response;
-        try {
-            // Try relative path first
-            response = await fetch('../resources/testimonials-in-become-a-writer-today.csv');
-        } catch (e) {
-            // If that fails, try the absolute path
-            response = await fetch('/testimonials/resources/testimonials-in-become-a-writer-today.csv');
+    // Return hardcoded testimonials instead of loading from CSV
+    return [
+        {
+            type: "text",
+            createdAt: "Apr 22, 2025",
+            submitterName: "Eric Hahn",
+            submitterEmail: "",
+            submitterAvatar: "",
+            message: "Thank you, sir. The presentation was fantastic, and I am extremely grateful for your expertise, and your time."
+        },
+        {
+            type: "text",
+            createdAt: "Apr 10, 2025",
+            submitterName: "Kimberly Guerre",
+            submitterEmail: "",
+            submitterAvatar: "",
+            message: "I really appreciate all your offerings in addition to the 1:1. You are a fantastic teacher and just really deliver so much value without the annoying bits so many video presenters have. I recommend you like crazy to my friends and colleagues. Thanks for being so helpful. I know I'm much further in using Claude as a valuable tool in my work thanks to your teaching."
+        },
+        {
+            type: "text",
+            createdAt: "Apr 2, 2025",
+            submitterName: "Ezra Sitt",
+            submitterEmail: "",
+            submitterAvatar: "",
+            message: "Hi Bryan, I am loving this newsletter. One thing that has been a real game-changer for me is your advice to always tell chatgpt that it is an expert on whatever you are asking it. I even do it when asking it to search for products."
+        },
+        {
+            type: "text",
+            createdAt: "Mar 20, 2025",
+            submitterName: "Trevor Smith",
+            submitterEmail: "",
+            submitterAvatar: "https://firebasestorage.googleapis.com/v0/b/testimonialto.appspot.com/o/testimonials%2F1cba4c65-d0b3-492a-a7e8-0c7185d43075%2Favatar?alt=media&token=5d69a0f6-09b1-4a06-88ac-ef5c5f1ba3f7",
+            message: "Hi Bryan, This is great, it's helping me set up the prompts for writing content for my new site."
+        },
+        {
+            type: "text",
+            createdAt: "Mar 20, 2025",
+            submitterName: "Benjamin Price",
+            submitterEmail: "",
+            submitterAvatar: "https://firebasestorage.googleapis.com/v0/b/testimonialto.appspot.com/o/testimonials%2F1ea6659d-fa4e-4cb2-b4fc-243e1d03ea6a%2Favatar?alt=media&token=48ba732a-dc6a-4f68-bb7c-56f872c52527",
+            message: "Loving Prompt Writing Studio. Thank you."
+        },
+        {
+            type: "text",
+            createdAt: "Sep 7, 2024",
+            submitterName: "Steve Williams",
+            submitterEmail: "stevesup@fastmail.com",
+            submitterAvatar: "https://firebasestorage.googleapis.com/v0/b/testimonialto.appspot.com/o/testimonials%2F43c1e38c-17af-4237-bac7-b5f9c92234a2%2Favatar?alt=media&token=ba53c5fd-0779-4c67-8edd-11c4c5f910d8",
+            message: "Hello, I'm Steve, and I recently attended a workshop by Bryan Collins on writing and repurposing. I loved his training, along with all the provided materials. This will help me get up to speed with the current writing trends. As a bonus, Bryan shared his personal writing workflow and content strategy, which inspired me to leverage technology to my advantage. I highly recommend Bryan Collins' courses!"
         }
-        
-        if (!response.ok) {
-            throw new Error(`Failed to fetch testimonials: ${response.status} ${response.statusText}`);
-        }
-        
-        const csvText = await response.text();
-        console.log('CSV loaded successfully, length:', csvText.length);
-        const testimonials = parseCSV(csvText);
-        console.log('Parsed testimonials:', testimonials.length);
-        return testimonials;
-    } catch (error) {
-        console.error('Error loading testimonials:', error);
-        return [];
-    }
+    ];
 }
 
 function isValidTestimonial(message) {
@@ -254,23 +281,12 @@ class TestimonialWidget {
 
 // Initialize the widget with configuration
 document.addEventListener('DOMContentLoaded', () => {
-    console.log('DOM loaded, initializing testimonial widget');
-    try {
-        const container = document.querySelector('.testimonial-container');
-        console.log('Found testimonial container:', container);
-        
-        const wrapper = document.querySelector('.testimonials-wrapper');
-        console.log('Found testimonials wrapper:', wrapper);
-        
-        new TestimonialWidget({
-            layout: 'modern', // or 'minimal' or 'classic'
-            transition: 'fade', // or 'slide' or 'flip'
-            animationSpeed: 5000,
-            autoplay: true,
-            showControls: true
-        });
-        console.log('Widget initialized successfully');
-    } catch (error) {
-        console.error('Error initializing testimonial widget:', error);
-    }
+    // Simple initialization with default settings
+    new TestimonialWidget({
+        layout: 'modern',
+        transition: 'fade',
+        animationSpeed: 5000,
+        autoplay: true,
+        showControls: true
+    });
 });
