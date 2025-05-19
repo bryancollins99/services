@@ -1,9 +1,24 @@
 // Load testimonials from CSV
 async function loadTestimonials() {
     try {
-        const response = await fetch('/testimonials/resources/testimonials-in-become-a-writer-today.csv');
+        // Try multiple possible paths to handle different deployment environments
+        let response;
+        try {
+            // Try relative path first
+            response = await fetch('../resources/testimonials-in-become-a-writer-today.csv');
+        } catch (e) {
+            // If that fails, try the absolute path
+            response = await fetch('/testimonials/resources/testimonials-in-become-a-writer-today.csv');
+        }
+        
+        if (!response.ok) {
+            throw new Error(`Failed to fetch testimonials: ${response.status} ${response.statusText}`);
+        }
+        
         const csvText = await response.text();
+        console.log('CSV loaded successfully, length:', csvText.length);
         const testimonials = parseCSV(csvText);
+        console.log('Parsed testimonials:', testimonials.length);
         return testimonials;
     } catch (error) {
         console.error('Error loading testimonials:', error);
@@ -239,11 +254,23 @@ class TestimonialWidget {
 
 // Initialize the widget with configuration
 document.addEventListener('DOMContentLoaded', () => {
-    new TestimonialWidget({
-        layout: 'modern', // or 'minimal' or 'classic'
-        transition: 'fade', // or 'slide' or 'flip'
-        animationSpeed: 5000,
-        autoplay: true,
-        showControls: true
-    });
+    console.log('DOM loaded, initializing testimonial widget');
+    try {
+        const container = document.querySelector('.testimonial-container');
+        console.log('Found testimonial container:', container);
+        
+        const wrapper = document.querySelector('.testimonials-wrapper');
+        console.log('Found testimonials wrapper:', wrapper);
+        
+        new TestimonialWidget({
+            layout: 'modern', // or 'minimal' or 'classic'
+            transition: 'fade', // or 'slide' or 'flip'
+            animationSpeed: 5000,
+            autoplay: true,
+            showControls: true
+        });
+        console.log('Widget initialized successfully');
+    } catch (error) {
+        console.error('Error initializing testimonial widget:', error);
+    }
 });
